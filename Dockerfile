@@ -7,7 +7,6 @@ WORKDIR /src
 COPY ["dell_switch_exporter.csproj", "./"]
 RUN dotnet restore "./dell_switch_exporter.csproj"
 COPY . .
-WORKDIR "/src/."
 RUN dotnet build "dell_switch_exporter.csproj" -c Release -o /app/build
 
 FROM build AS publish
