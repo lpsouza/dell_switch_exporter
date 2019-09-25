@@ -342,4 +342,4 @@ ASALocalRun/
 healthchecksdb
 
 # Sensible informations
-snmp-info.txt
+prometheus.yml
