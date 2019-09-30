@@ -59,56 +59,56 @@ namespace dell_switch_exporter
                     {
                         if (AdminStatusString == string.Empty)
                         {
-                            AdminStatusString += Prometheus("interface").CreateMetricDescription(
-                                "AdminStatus",
+                            AdminStatusString += Prometheus.CreateMetricDescription(
+                                "Interface_AdminStatus",
                                 "gauge",
                                 "The desired state of the interface."
                             );
                         }
-                        AdminStatusString += Prometheus("interface").CreateMetric(
-                            "AdminStatus",
+                        AdminStatusString += Prometheus.CreateMetric(
+                            "Interface_AdminStatus",
                             i.AdminStatus.ToString(),
                             "{interface=\"" + i.Name + "\", description=" + i.Description + "}"
                         );
 
                         if (OperStatusString == string.Empty)
                         {
-                            OperStatusString += Prometheus("interface").CreateMetricDescription(
-                                "OperStatus",
+                            OperStatusString += Prometheus.CreateMetricDescription(
+                                "Interface_OperStatus",
                                 "gauge",
                                 "The current operational state of the interface."
                             );
                         }
-                        OperStatusString += Prometheus("interface").CreateMetric(
-                            "OperStatus",
+                        OperStatusString += Prometheus.CreateMetric(
+                            "Interface_OperStatus",
                             i.OperStatus.ToString(),
                             "{interface=\"" + i.Name + "\", description=" + i.Description + "}"
                         );
                         
                         if (InOctetsString == string.Empty)
                         {
-                            InOctetsString += Prometheus("interface").CreateMetricDescription(
-                                "InOctets",
+                            InOctetsString += Prometheus.CreateMetricDescription(
+                                "Interface_InOctets",
                                 "counter",
                                 "The total number of octets received on the interface, including framing characters."
                             );
                         }
-                        InOctetsString += Prometheus("interface").CreateMetric(
-                            "InOctets",
+                        InOctetsString += Prometheus.CreateMetric(
+                            "Interface_InOctets",
                             i.InOctets.ToString(),
                             "{interface=\"" + i.Name + "\", description=" + i.Description + "}"
                         );
 
                         if (OutOctetsString == string.Empty)
                         {
-                            OutOctetsString += Prometheus("interface").CreateMetricDescription(
-                                "OutOctets",
+                            OutOctetsString += Prometheus.CreateMetricDescription(
+                                "Interface_OutOctets",
                                 "counter",
                                 "The total number of octets transmited on the interface, including framing characters."
                             );
                         }
-                        OutOctetsString += Prometheus("interface").CreateMetric(
-                            "OutOctets",
+                        OutOctetsString += Prometheus.CreateMetric(
+                            "Interface_OutOctets",
                             i.OutOctets.ToString(),
                             "{interface=\"" + i.Name + "\", description=" + i.Description + "}"
                         );
