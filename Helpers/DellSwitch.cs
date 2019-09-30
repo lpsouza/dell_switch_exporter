@@ -20,8 +20,9 @@ namespace dell_switch_exporter
 
             snmp.AddOid("1.3.6.1.2.1.2.1.0"); // ifNumber
             snmp.AddOid("1.3.6.1.4.1.674.10895.3000.1.2.100.1.0"); // productIdentification
-            int maxRepetitions = int.Parse(snmp.Get()[0].Data.ToString());
-            string productIdentification = snmp.Get()[1].Data.ToString();
+            IList<Variable> ifInfo = snmp.Get();
+            int maxRepetitions = int.Parse(ifInfo[0].Data.ToString());
+            string productIdentification = ifInfo[1].Data.ToString();
 
             bool isS4048T = (productIdentification.Contains("S4048T-ON")) ? true : false;
 
