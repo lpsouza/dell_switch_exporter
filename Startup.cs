@@ -113,6 +113,8 @@ namespace dell_switch_exporter
                             "{interface=\"" + i.Name + "\", description=" + i.Description + "}"
                         );
                     }
+                    result += AdminStatusString;
+                    result += OperStatusString;
                     result += InOctetsString;
                     result += OutOctetsString;
                 }
