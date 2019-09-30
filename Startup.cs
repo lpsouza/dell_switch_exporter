@@ -48,12 +48,12 @@ namespace dell_switch_exporter
 
                 if (ip != string.Empty && community != string.Empty)
                 {
-                    SNMP snmp = new SNMP(ip, community);
-                    Switch sw = snmp.GetSwitchInfo();
+                    DellSwitch dellSwitch = new DellSwitch(ip, community);
+                    IList<Interface> interfaces = dellSwitch.GetInterfaceInfo();
 
                     string InOctetsString = string.Empty;
                     string OutOctetsString = string.Empty;
-                    foreach (var i in sw.Interfaces)
+                    foreach (var i in interfaces)
                     {
                         if (InOctetsString == string.Empty)
                         {
@@ -66,7 +66,7 @@ namespace dell_switch_exporter
                         InOctetsString += Prometheus.CreateMetric(
                             "InOctets",
                             i.InOctets.ToString(),
-                            "{interface=\"" + i.Name + "\"}"
+                            "{interface=\"" + i.Name + "\", description=" + i.Description + "}"
                         );
 
                         if (OutOctetsString == string.Empty)
@@ -80,7 +80,7 @@ namespace dell_switch_exporter
                         OutOctetsString += Prometheus.CreateMetric(
                             "OutOctets",
                             i.OutOctets.ToString(),
-                            "{interface=\"" + i.Name + "\"}"
+                            "{interface=\"" + i.Name + "\", description=" + i.Description + "}"
                         );
                     }
                     result += InOctetsString;
