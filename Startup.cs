@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -57,13 +57,13 @@ namespace dell_switch_exporter
                     {
                         if (InOctetsString == string.Empty)
                         {
-                            InOctetsString += Prometheus.CreateMetricDescription(
+                            InOctetsString += Prometheus("interface").CreateMetricDescription(
                                 "InOctets",
                                 "counter",
                                 "The total number of octets received on the interface, including framing characters."
                             );
                         }
-                        InOctetsString += Prometheus.CreateMetric(
+                        InOctetsString += Prometheus("interface").CreateMetric(
                             "InOctets",
                             i.InOctets.ToString(),
                             "{interface=\"" + i.Name + "\", description=" + i.Description + "}"
@@ -71,13 +71,13 @@ namespace dell_switch_exporter
 
                         if (OutOctetsString == string.Empty)
                         {
-                            OutOctetsString += Prometheus.CreateMetricDescription(
+                            OutOctetsString += Prometheus("interface").CreateMetricDescription(
                                 "OutOctets",
                                 "counter",
                                 "The total number of octets transmited on the interface, including framing characters."
                             );
                         }
-                        OutOctetsString += Prometheus.CreateMetric(
+                        OutOctetsString += Prometheus("interface").CreateMetric(
                             "OutOctets",
                             i.OutOctets.ToString(),
                             "{interface=\"" + i.Name + "\", description=" + i.Description + "}"
