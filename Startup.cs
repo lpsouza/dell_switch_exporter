@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -51,10 +51,40 @@ namespace dell_switch_exporter
                     DellSwitch dellSwitch = new DellSwitch(ip, community);
                     IList<Interface> interfaces = dellSwitch.GetInterfaceInfo();
 
+                    string AdminStatusString = string.Empty;
+                    string OperStatusString = string.Empty;
                     string InOctetsString = string.Empty;
                     string OutOctetsString = string.Empty;
                     foreach (var i in interfaces)
                     {
+                        if (AdminStatusString == string.Empty)
+                        {
+                            AdminStatusString += Prometheus("interface").CreateMetricDescription(
+                                "AdminStatus",
+                                "gauge",
+                                "The desired state of the interface."
+                            );
+                        }
+                        AdminStatusString += Prometheus("interface").CreateMetric(
+                            "AdminStatus",
+                            i.AdminStatus.ToString(),
+                            "{interface=\"" + i.Name + "\", description=" + i.Description + "}"
+                        );
+
+                        if (OperStatusString == string.Empty)
+                        {
+                            OperStatusString += Prometheus("interface").CreateMetricDescription(
+                                "OperStatus",
+                                "gauge",
+                                "The current operational state of the interface."
+                            );
+                        }
+                        OperStatusString += Prometheus("interface").CreateMetric(
+                            "OperStatus",
+                            i.OperStatus.ToString(),
+                            "{interface=\"" + i.Name + "\", description=" + i.Description + "}"
+                        );
+                        
                         if (InOctetsString == string.Empty)
                         {
                             InOctetsString += Prometheus("interface").CreateMetricDescription(
