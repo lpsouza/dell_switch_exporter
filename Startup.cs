@@ -89,14 +89,14 @@ namespace dell_switch_exporter
                         if (HighSpeedString == string.Empty)
                         {
                             HighSpeedString += Prometheus.CreateMetricDescription(
-                                "Interface_HighSpeed",
-                                "gauge",
-                                "An estimate of the interface's current bandwidth in units of 1,000,000 bits per second."
+                                "Interface_Speed",
+                                "counter",
+                                "An estimate of the interface's current bandwidth in bits per second."
                             );
                         }
                         HighSpeedString += Prometheus.CreateMetric(
-                            "Interface_HighSpeed",
-                            i.HighSpeed.ToString(),
+                            "Interface_Speed",
+                            i.Speed.ToString(),
                             "{interface=\"" + i.Name + "\", description=" + i.Description + "}"
                         );
                         
