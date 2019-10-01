@@ -42,6 +42,7 @@ namespace dell_switch_exporter
                 snmp.AddOid(string.Join(".", new string[] { "1.3.6.1.2.1.31.1.1.1.18", id })); // ifAlias
                 snmp.AddOid(string.Join(".", new string[] { "1.3.6.1.2.1.2.2.1.7", id })); // ifAdminStatus
                 snmp.AddOid(string.Join(".", new string[] { "1.3.6.1.2.1.2.2.1.8", id })); // ifOperStatus
+                snmp.AddOid(string.Join(".", new string[] { "1.3.6.1.2.1.31.1.1.1.15", id })); // ifHighSpeed
                 snmp.AddOid(string.Join(".", new string[] { "1.3.6.1.2.1.31.1.1.1.6", id })); // ifHCInOctets
                 snmp.AddOid(string.Join(".", new string[] { "1.3.6.1.2.1.31.1.1.1.10", id })); // ifHCOutOctets
                 
@@ -58,8 +59,9 @@ namespace dell_switch_exporter
                 }
                 iface.AdminStatus = int.Parse(info[2].Data.ToString());
                 iface.OperStatus = int.Parse(info[3].Data.ToString());
-                iface.InOctets = UInt64.Parse(info[4].Data.ToString());
-                iface.OutOctets = UInt64.Parse(info[5].Data.ToString());
+                iface.HighSpeed = UInt64.Parse(info[4].Data.ToString());
+                iface.InOctets = UInt64.Parse(info[5].Data.ToString());
+                iface.OutOctets = UInt64.Parse(info[6].Data.ToString());
 
             }
 

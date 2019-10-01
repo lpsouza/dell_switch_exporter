@@ -53,6 +53,7 @@ namespace dell_switch_exporter
 
                     string AdminStatusString = string.Empty;
                     string OperStatusString = string.Empty;
+                    string HighSpeedString = string.Empty;
                     string InOctetsString = string.Empty;
                     string OutOctetsString = string.Empty;
                     foreach (var i in interfaces)
@@ -82,6 +83,20 @@ namespace dell_switch_exporter
                         OperStatusString += Prometheus.CreateMetric(
                             "Interface_OperStatus",
                             i.OperStatus.ToString(),
+                            "{interface=\"" + i.Name + "\", description=" + i.Description + "}"
+                        );
+                        
+                        if (HighSpeedString == string.Empty)
+                        {
+                            HighSpeedString += Prometheus.CreateMetricDescription(
+                                "Interface_HighSpeed",
+                                "gauge",
+                                "An estimate of the interface's current bandwidth in units of 1,000,000 bits per second."
+                            );
+                        }
+                        HighSpeedString += Prometheus.CreateMetric(
+                            "Interface_HighSpeed",
+                            i.HighSpeed.ToString(),
                             "{interface=\"" + i.Name + "\", description=" + i.Description + "}"
                         );
                         
@@ -115,6 +130,7 @@ namespace dell_switch_exporter
                     }
                     result += AdminStatusString;
                     result += OperStatusString;
+                    result += HighSpeedString;
                     result += InOctetsString;
                     result += OutOctetsString;
                 }

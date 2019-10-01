@@ -9,6 +9,7 @@ namespace dell_switch_exporter
         public string Description { get; set; }
         public int AdminStatus { get; set; }
         public int OperStatus { get; set; }
+        public UInt64 HighSpeed { get; set; }
         public UInt64 InOctets { get; set; }
         public UInt64 OutOctets { get; set; }
     }
