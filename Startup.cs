@@ -51,55 +51,25 @@ namespace dell_switch_exporter
                     DellSwitch dellSwitch = new DellSwitch(ip, community);
                     IList<Interface> interfaces = dellSwitch.GetInterfaceInfo();
 
-                    string AdminStatusString = string.Empty;
-                    string OperStatusString = string.Empty;
-                    string HighSpeedString = string.Empty;
+                    string InfoString = string.Empty;
                     string InOctetsString = string.Empty;
                     string OutOctetsString = string.Empty;
                     foreach (var i in interfaces)
                     {
-                        if (AdminStatusString == string.Empty)
+                        if (InfoString == string.Empty)
                         {
-                            AdminStatusString += Prometheus.CreateMetricDescription(
-                                "Interface_AdminStatus",
+                            InfoString += Prometheus.CreateMetricDescription(
+                                "Interface_Information",
                                 "gauge",
-                                "The desired state of the interface."
+                                "The information of the interface."
                             );
                         }
-                        AdminStatusString += Prometheus.CreateMetric(
-                            "Interface_AdminStatus",
-                            i.AdminStatus.ToString(),
-                            "{interface=\"" + i.Name + "\", description=" + i.Description + "}"
+                        InfoString += Prometheus.CreateMetric(
+                            "Interface_Information",
+                            i.OperStatus.ToString(),
+                            "{id=\"" + i.Id + "\" interface=\"" + i.Name + "\", description=" + i.Description + ", adminStatus=\"" + i.AdminStatus.ToString() + "\", speed=\"" + i.Speed.ToString() + "\"}"
                         );
 
-                        if (OperStatusString == string.Empty)
-                        {
-                            OperStatusString += Prometheus.CreateMetricDescription(
-                                "Interface_OperStatus",
-                                "gauge",
-                                "The current operational state of the interface."
-                            );
-                        }
-                        OperStatusString += Prometheus.CreateMetric(
-                            "Interface_OperStatus",
-                            i.OperStatus.ToString(),
-                            "{interface=\"" + i.Name + "\", description=" + i.Description + "}"
-                        );
-                        
-                        if (HighSpeedString == string.Empty)
-                        {
-                            HighSpeedString += Prometheus.CreateMetricDescription(
-                                "Interface_Speed",
-                                "counter",
-                                "An estimate of the interface's current bandwidth in bits per second."
-                            );
-                        }
-                        HighSpeedString += Prometheus.CreateMetric(
-                            "Interface_Speed",
-                            i.Speed.ToString(),
-                            "{interface=\"" + i.Name + "\", description=" + i.Description + "}"
-                        );
-                        
                         if (InOctetsString == string.Empty)
                         {
                             InOctetsString += Prometheus.CreateMetricDescription(
@@ -128,9 +98,7 @@ namespace dell_switch_exporter
                             "{interface=\"" + i.Name + "\", description=" + i.Description + "}"
                         );
                     }
-                    result += AdminStatusString;
-                    result += OperStatusString;
-                    result += HighSpeedString;
+                    result += InfoString;
                     result += InOctetsString;
                     result += OutOctetsString;
                 }
