@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using dotnet_lib_snmp;
 using dotnet_lib_prometheus;
 
-namespace dell_switch_exporter
+namespace networking_exporter
 {
     public class Startup
     {
