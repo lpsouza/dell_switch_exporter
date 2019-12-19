@@ -1,0 +1,6 @@
+[submodule "libs/snmp"]
+	path = libs/snmp
+	url = https://github.com/lpsouza/dotnet_lib_prometheus
+[submodule "libs/prometheus"]
+	path = libs/prometheus
+	url = https://github.com/lpsouza/dotnet_lib_prometheus
