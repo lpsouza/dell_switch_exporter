@@ -46,12 +46,22 @@ namespace networking_exporter
 
                 string ip = req.Query["target"].ToString();
                 string community = req.Query["community"].ToString();
+                string vendor = req.Query["vendor"].ToString();
                 string result = string.Empty;
 
-                if (ip != string.Empty && community != string.Empty)
+                if (ip != string.Empty && community != string.Empty && vendor != string.Empty)
                 {
-                    DellSwitch dellSwitch = new DellSwitch(ip, community);
-                    IList<Interface> interfaces = dellSwitch.GetInterfaceInfo();
+                    DellSwitch dellSwitch = null;
+                    IList<Interface> interfaces = null;
+                    switch (vendor.ToLower())
+                    {
+                        case "dell":
+                            dellSwitch = new DellSwitch(ip, community);
+                            interfaces = dellSwitch.GetInterfaceInfo();
+                            break;
+                        default:
+                        break;
+                    }
 
                     string InfoString = string.Empty;
                     string InOctetsString = string.Empty;
@@ -106,7 +116,7 @@ namespace networking_exporter
                 }
                 else
                 {
-                    result = "Invalid request. Parameters target and community has required.";
+                    result = "Invalid request. Parameters target, community and vendor has required.";
                 }
 
                 await context.Response.WriteAsync(result);
