@@ -10,4 +10,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.1" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\libs\prometheus\dotnet_lib_prometheus.csproj" />
+    <ProjectReference Include="..\libs\snmp\dotnet_lib_snmp.csproj" />
+  </ItemGroup>
+
 </Project>

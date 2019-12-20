@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "networking_exporter", "src\networking_exporter.csproj", "{5955D7AE-4237-4439-B719-7AE806751D84}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{B436EA44-6A32-4417-840C-0C9BB880C258}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet_lib_prometheus", "libs\prometheus\dotnet_lib_prometheus.csproj", "{2071C685-0CD9-4829-8EA5-20688D1B3ADF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet_lib_snmp", "libs\snmp\dotnet_lib_snmp.csproj", "{C35DD927-C4FC-4674-9FEA-5F6937126F88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +36,33 @@ Global
 		{5955D7AE-4237-4439-B719-7AE806751D84}.Release|x64.Build.0 = Release|Any CPU
 		{5955D7AE-4237-4439-B719-7AE806751D84}.Release|x86.ActiveCfg = Release|Any CPU
 		{5955D7AE-4237-4439-B719-7AE806751D84}.Release|x86.Build.0 = Release|Any CPU
+		{2071C685-0CD9-4829-8EA5-20688D1B3ADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2071C685-0CD9-4829-8EA5-20688D1B3ADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2071C685-0CD9-4829-8EA5-20688D1B3ADF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2071C685-0CD9-4829-8EA5-20688D1B3ADF}.Debug|x64.Build.0 = Debug|Any CPU
+		{2071C685-0CD9-4829-8EA5-20688D1B3ADF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2071C685-0CD9-4829-8EA5-20688D1B3ADF}.Debug|x86.Build.0 = Debug|Any CPU
+		{2071C685-0CD9-4829-8EA5-20688D1B3ADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2071C685-0CD9-4829-8EA5-20688D1B3ADF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2071C685-0CD9-4829-8EA5-20688D1B3ADF}.Release|x64.ActiveCfg = Release|Any CPU
+		{2071C685-0CD9-4829-8EA5-20688D1B3ADF}.Release|x64.Build.0 = Release|Any CPU
+		{2071C685-0CD9-4829-8EA5-20688D1B3ADF}.Release|x86.ActiveCfg = Release|Any CPU
+		{2071C685-0CD9-4829-8EA5-20688D1B3ADF}.Release|x86.Build.0 = Release|Any CPU
+		{C35DD927-C4FC-4674-9FEA-5F6937126F88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C35DD927-C4FC-4674-9FEA-5F6937126F88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C35DD927-C4FC-4674-9FEA-5F6937126F88}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C35DD927-C4FC-4674-9FEA-5F6937126F88}.Debug|x64.Build.0 = Debug|Any CPU
+		{C35DD927-C4FC-4674-9FEA-5F6937126F88}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C35DD927-C4FC-4674-9FEA-5F6937126F88}.Debug|x86.Build.0 = Debug|Any CPU
+		{C35DD927-C4FC-4674-9FEA-5F6937126F88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C35DD927-C4FC-4674-9FEA-5F6937126F88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C35DD927-C4FC-4674-9FEA-5F6937126F88}.Release|x64.ActiveCfg = Release|Any CPU
+		{C35DD927-C4FC-4674-9FEA-5F6937126F88}.Release|x64.Build.0 = Release|Any CPU
+		{C35DD927-C4FC-4674-9FEA-5F6937126F88}.Release|x86.ActiveCfg = Release|Any CPU
+		{C35DD927-C4FC-4674-9FEA-5F6937126F88}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2071C685-0CD9-4829-8EA5-20688D1B3ADF} = {B436EA44-6A32-4417-840C-0C9BB880C258}
+		{C35DD927-C4FC-4674-9FEA-5F6937126F88} = {B436EA44-6A32-4417-840C-0C9BB880C258}
 	EndGlobalSection
 EndGlobal
